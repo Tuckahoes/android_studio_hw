@@ -6,11 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,10 +49,14 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo itemInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()){
+            //删除选择的item
             case R.id.remove:
-                Toast.makeText(this,"删除",Toast.LENGTH_SHORT).show();
-
+                //int position =itemInfo.position;
+                //workList.remove(itemInfo.position);
+                WorkAdapter adapter=new WorkAdapter(workList);
+                adapter.notifyDataSetChanged();
                 break;
             default:
         }
