@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Work> workList=new ArrayList<>();
+    public List<Work> workList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +53,19 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             //删除选择的item
             case R.id.remove:
-                //int position =itemInfo.position;
+                int position =itemInfo.position;
                 //workList.remove(itemInfo.position);
-                WorkAdapter adapter=new WorkAdapter(workList);
-                adapter.notifyDataSetChanged();
+                //WorkAdapter adapter=new WorkAdapter(workList);
+                //adapter.notifyDataSetChanged();
                 break;
+            //修改书本信息
+            case R.id.edit:
+                Intent intent=new Intent(MainActivity.this,SecondActivity.class);
+                View targetView=itemInfo.targetView;
+                View book_name_v=targetView.findViewById(R.id.work_name);
+                String book_name= ((TextView) book_name_v).getText().toString();
+                intent.putExtra("book_name",book_name);
+                startActivityForResult(intent,1);
             default:
         }
         return super.onContextItemSelected(item);

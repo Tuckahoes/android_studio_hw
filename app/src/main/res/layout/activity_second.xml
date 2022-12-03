@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SecondActivity">
-    <Button
-        android:id="@+id/sec_btn"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/old_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBaseline_toTopOf="parent"
-        android:text="add and back"/>
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
+        android:text="old name"/>
+    <EditText
+        android:id="@+id/new_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/old_name"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:hint="input new name"/>
+    <Button
+        android:id="@+id/confirm_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_name"
+        android:layout_toLeftOf="@id/new_name"
+        android:text="确定"/>
+    <Button
+        android:id="@+id/cancel_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_name"
+        android:layout_toRightOf="@id/new_name"
+        android:text="取消"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
