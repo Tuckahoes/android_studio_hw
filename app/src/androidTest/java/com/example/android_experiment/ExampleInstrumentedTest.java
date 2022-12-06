@@ -1,4 +1,4 @@
-package com.example.as_hw_7;
+package com.example.android_experiment;
 
 import android.content.Context;
 
