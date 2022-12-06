@@ -48,29 +48,8 @@ public class BookFragment extends Fragment {
         return workList;
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        //String label=getArguments().getString("label");
-//        //TextView text =getView().findViewById(R.id.tv_bg);
-//        //text.setText(label);
-//        //text.setBackgroundColor(Color.rgb(150,150,200));
-//
-////        List<Work> workList = new ArrayList<>();
-////        for (int i = 0; i < 8; i++) {
-////            Work one_work = new Work("one_work", R.drawable.avator);
-////            workList.add(one_work);
-////        }
-////        //RecyclerView recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
-////        //LinearLayoutManager layoutManager=new LinearLayoutManager(MainActivity);
-////        MainActivity.recyclerView.setLayoutManager(MainActivity.layoutManager);
-////        //MainActivity.WorkAdapter adapter=new MainActivity.WorkAdapter(workList);
-////        registerForContextMenu(MainActivity.recyclerView);
-////        MainActivity.recyclerView.setLongClickable(true);
-////        MainActivity.recyclerView.setAdapter(MainActivity.adapter);
-//    }
 
-    //自定义适配器
+    //图书（作品）适配器WorkAdapter
     class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder> {
         private List<Work> mWorkList;
 
@@ -101,7 +80,6 @@ public class BookFragment extends Fragment {
                     //Intent intent=new Intent(MainActivity.this,SecondActivity.class);
                     //startActivityForResult(intent,1);
                 }
-
             });
             return holder;
         }
