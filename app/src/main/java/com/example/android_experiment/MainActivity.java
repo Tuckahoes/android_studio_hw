@@ -30,7 +30,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public List<Work> workList = new ArrayList<>();
-    //private List<TabFragment> tabFragmentList = new ArrayList<>();
 
     public class PageViewFragmentAdapter extends FragmentStateAdapter {
         public PageViewFragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
@@ -47,12 +46,14 @@ public class MainActivity extends AppCompatActivity {
                     return WebViewFragment.newInstance();
                 case 2:
                     return MapViewFragment.newInstance();
+                case 3:
+                    return GameViewFragment.newInstance();
             }
             return BookFragment.newInstance();
         }
         @Override
         public int getItemCount() {
-            return 3;
+            return 4;
         }
     }
     @Override
@@ -76,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         tab.setText("卖家");
+                        break;
+                    case 3:
+                        tab.setText("游戏");
                         break;
                 }
             }
@@ -101,34 +105,34 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
     //contextMenu
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//        getMenuInflater().inflate(R.menu.main, menu);
-//    }
-//    @Override
-//    public boolean onContextItemSelected(MenuItem item) {
-//        AdapterView.AdapterContextMenuInfo itemInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-//        switch (item.getItemId()){
-//            //删除选择的item
-//            case R.id.remove:
-//                int position =itemInfo.position;
-//                //workList.remove(itemInfo.position);
-//                //WorkAdapter adapter=new WorkAdapter(workList);
-//                //adapter.notifyDataSetChanged();
-//                break;
-//            //修改书本信息
-//            case R.id.edit:
-//                Intent intent=new Intent(MainActivity.this,SecondActivity.class);
-//                View targetView=itemInfo.targetView;
-//                View book_name_v=targetView.findViewById(R.id.work_name);
-//                String book_name= ((TextView) book_name_v).getText().toString();
-//                intent.putExtra("book_name",book_name);
-//                startActivityForResult(intent,1);
-//            default:
-//        }
-//        return super.onContextItemSelected(item);
-//    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.main, menu);
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo itemInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()){
+            //删除选择的item
+            case R.id.remove:
+                int position =itemInfo.position;
+                //workList.remove(itemInfo.position);
+                //WorkAdapter adapter=new WorkAdapter(workList);
+                //adapter.notifyDataSetChanged();
+                break;
+            //修改书本信息
+            case R.id.edit:
+                Intent intent=new Intent(MainActivity.this,SecondActivity.class);
+                View targetView=itemInfo.targetView;
+                View book_name_v=targetView.findViewById(R.id.work_name);
+                String book_name= ((TextView) book_name_v).getText().toString();
+                intent.putExtra("book_name",book_name);
+                startActivityForResult(intent,1);
+            default:
+        }
+        return super.onContextItemSelected(item);
+    }
 //    //返回数据
 //    @Override
 //    protected void onActivityResult(int requestCode,int resultCode,Intent data) {
@@ -149,6 +153,3 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 }
-
-
-

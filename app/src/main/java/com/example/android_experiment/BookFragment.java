@@ -93,6 +93,6 @@ public class BookFragment extends Fragment {
         public int getItemCount() {
             return mWorkList.size();
         }
-
     }
+
 }
