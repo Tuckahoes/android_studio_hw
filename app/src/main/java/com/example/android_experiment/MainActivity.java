@@ -70,16 +70,16 @@ public class MainActivity extends AppCompatActivity {
                 switch(position)
                 {
                     case 0:
-                        tab.setText("图书");
+                        tab.setText("BOOK");
                         break;
                     case 1:
-                        tab.setText("新闻");
+                        tab.setText("NEWS");
                         break;
                     case 2:
-                        tab.setText("卖家");
+                        tab.setText("MAP");
                         break;
                     case 3:
-                        tab.setText("游戏");
+                        tab.setText("GAME");
                         break;
                 }
             }

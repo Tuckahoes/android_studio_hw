@@ -1,6 +1,8 @@
 package com.example.android_experiment.views;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,6 +13,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import androidx.annotation.NonNull;
+
+import com.example.android_experiment.R;
 
 import java.util.ArrayList;
 
@@ -102,15 +106,26 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 e.printStackTrace();
             }
         }
+
         @Override
         public void run() {
+            Paint bgpaint = new Paint(); //新建一个画笔对象
+            bgpaint.setAntiAlias(true);//抗锯齿功能
+            bgpaint.setColor(Color.RED);  //设置画笔颜色
+            bgpaint.setStyle(Paint.Style.STROKE);//设置填充样式
+            bgpaint.setStrokeWidth(30);//设置画笔宽度 ，单位px
+
+            //将图片转化成 bitmap 对象
+            Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.background);
             int hitCount=0;
             while(isDrawing)
             {
                 Canvas canvas =null;
                 try {
+
                     canvas = surfaceHolder.lockCanvas();
-                    canvas.drawColor(Color.WHITE);
+                    //canvas.drawColor(Color.WHITE);
+                    canvas.drawBitmap(bgBitmap,0,0,bgpaint);
 
                     if(isTouched) {
                         float tempX = touchedX;
@@ -121,9 +136,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                         }
                     }
                     Paint textPaint = new Paint();
-                    textPaint.setColor(Color.BLACK);
-                    textPaint.setTextSize(40);
-                    canvas.drawText("you hit "+hitCount+" objects",40,40,textPaint);
+                    textPaint.setColor(Color.WHITE);
+                    textPaint.setStrokeWidth(50);
+                    textPaint.setTextSize(60);
+                    canvas.drawText("SCORE: "+hitCount+"  !",50,50,textPaint);
 
                     for (Spriter spriter: spriterArrayList) {
                         spriter.move(canvas.getHeight(), canvas.getWidth());

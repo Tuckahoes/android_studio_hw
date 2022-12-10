@@ -37,7 +37,7 @@ public class Spriter {
     }
     public void draw(Canvas canvas)
     {
-        @SuppressLint("UseCompatLoadingForDrawables") Bitmap bitmap=((BitmapDrawable)context.getResources().getDrawable(R.drawable.target)).getBitmap();
+        @SuppressLint("UseCompatLoadingForDrawables") Bitmap bitmap=((BitmapDrawable)context.getResources().getDrawable(R.drawable.bubble1)).getBitmap();
         Rect mSrcRect, mDestRect;
         Paint mBitPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
